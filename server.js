@@ -3,15 +3,15 @@ const path = require('path');
 
 const app = express();
 
-app.use('/user', (req, res) => {
-    res.send('Log in to get access');
-});
-
 app.use((req, res, next) => {
     res.show = (name) => {
         res.sendFile(path.join(__dirname, `/views/${name}`));
     };
     next();
+});
+
+app.use('/user', (req, res) => {
+    res.show('forbidden.html');
 });
 
 app.get('/', (req, res) => {
