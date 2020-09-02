@@ -14,6 +14,8 @@ app.use('/user', (req, res) => {
     res.show('forbidden.html');
 });
 
+app.use(express.static(path.join(__dirname, '/public')));
+
 app.get('/', (req, res) => {
     res.show('index.html');
 });
@@ -24,6 +26,10 @@ app.get('/home', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.show('about.html');
+});
+
+app.use((req, res) => {
+    res.show('error404.html');
 });
 
 app.listen(8000, () => {
