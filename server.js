@@ -29,7 +29,7 @@ app.get('/about', (req, res) => {
 });
 
 app.use((req, res) => {
-    res.show('error404.html');
+    res.status(404).show('error404.html');
 });
 
 app.listen(8000, () => {
